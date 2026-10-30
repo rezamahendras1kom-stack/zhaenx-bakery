@@ -1,0 +1,489 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css");
+@import url("https://fonts.googleapis.com/css2?family=Iceberg&family=Poppins:wght@200;300;400;500;600;700;800&family=Viga&family=Wallpoet&display=swap");
+@import url(https://db.onlinewebfonts.com/c/6138beb83221f6eb46ed08543a304d1d?family=Twentieth+Century);
+@import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  outline: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: var(--font-viga);
+}
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--warna-cofe);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: transparent;
+}
+:root {
+  --warna-text-steal: #e2e8f0;
+  --warna-cofe: #ad8926;
+  --baground-hitam: #010101;
+  --text-steal: #e2e8f0;
+  --zx-grey-dark: #1f242d;
+  --zx-grey-light: #323946;
+  --zx-blue-light: #0dcaf0;
+  --zx-blue-dark: #081b29;
+  --text-white: #f1f5f9;
+  --text-dark: #020822;
+  --zx-red: #b91c1c;
+  --zx-cyan: #155e75;
+  --zx-green: #16a34a;
+  --blue: #002fff;
+  /* --zx-violet: #712cf9; */
+  --zx-pink: #ff00ff;
+  --zx-teal: #5eead4;
+  --font-default: "Poppins", sans-serif;
+  --font-viga: "Viga", sans-serif;
+  --font-iceberg: "Iceberg", cursive;
+  --font-walpoet: "Wallpoet", sans-serif;
+  --font-twentieth-century: "Twentieth Century", sans-serif;
+  --shadow-first:
+    6px 6px 10px rgba(0, 0, 0, 1), 1px 1px 10px rgba(255, 255, 255, 0.6);
+  --shadow-second:
+    6px 6px 10px rgba(0, 0, 0, 1), 1px 1px 10px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 10px rgba(0, 0, 0, 1),
+    inset -1px -1px 5px rgba(255, 255, 255, 0.6);
+  --articel-bg: #cbd5e1;
+  --zx-yellow: #eab308;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7rem 0 0 0;
+}
+body {
+  background-color: var(--baground-hitam);
+  color: var(--warna-text-steal);
+  font-family: "Viga", sans-serif;
+}
+
+.navbar {
+  background-color: var(--baground-hitam);
+  border-bottom: 4px solid var(--warna-cofe);
+}
+.nav-link {
+  margin-top: 0;
+  color: var(--text-white);
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+  border-bottom: 0px solid var(--warna-cofe);
+}
+.nav-item.dropdown {
+  list-style-type: none;
+}
+.nav-item {
+  margin-right: 1rem;
+}
+.nav-link:hover,
+.navsrc a:hover {
+  color: var(--warna-cofe);
+  transition: all 0.3s ease;
+  transform: scale(1.05);
+}
+.navbar-brand {
+  color: var(--text-white);
+  font-size: 2rem;
+  font-weight: 500;
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+  font-family: "Pattaya", sans-serif;
+}
+.navbar-brand:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+  rotate: -2deg;
+}
+.nav-link.active {
+  border-bottom: 2px solid var(--warna-cofe);
+  padding-bottom: 0;
+  transition: 0.3s ease;
+}
+
+.navbar-brand .kelompok {
+  color: var(--warna-cofe);
+  font-family: var(--font-default);
+  font-weight: 500;
+  font-family: "Pattaya", sans-serif;
+}
+
+.navbar-toggler {
+  border-color: var(--text-white);
+  border: 2px solid var(--text-white);
+  color: var(--text-white);
+}
+.navbar-toggler:hover {
+  box-shadow: 0 0 10px var(--text-white);
+}
+
+.jumlahcart {
+  position: absolute;
+  top: 4%;
+  left: 10%;
+  transform: translateX(-50%);
+  width: 1.3rem;
+  height: 1.3rem;
+  background: var(--warna-cofe);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--text-white);
+  font-weight: 700;
+}
+
+.dropdown-menu,
+.dropdown-menu.show {
+  background: var(--baground-hitam);
+  border: 3px solid var(--warna-cofe);
+  border-radius: 10px;
+}
+.dropdown-menu a.dropdown-item,
+.dropdown-menu.show {
+  color: var(--text-white);
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: var(--baground-hitam);
+}
+.dropdown-menu a.dropdown-item:hover {
+  color: var(--baground-hitam);
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: var(--text-white);
+}
+
+.navbar img {
+  max-width: 5%;
+  padding: 0;
+}
+
+/* style home */
+#home {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("../img/hero.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  background-attachment: fixed;
+  padding-top: 4rem;
+}
+#home::before,
+#regis::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background: linear-gradient(
+    0deg,
+    rgba(1, 1, 3, 1) 5%,
+    rgba(255, 255, 255, 0) 30%
+  );
+  width: 100%;
+  height: 100%;
+}
+
+#home .conten h4 {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  font-size: 3.5rem;
+  color: var(--warna-cofe);
+}
+#home .ctn {
+  color: var(--text-warna-cofe);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 4.5rem;
+}
+#home .conten .slogan {
+  color: var(--text-warna-cofe);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+#home .conten .btn,
+#tentangkami .btn {
+  background: var(--warna-cofe);
+  color: var(--text-white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+#tentangkami .profile {
+  border-radius: 10px;
+  border: 2px solid var(--warna-cofe);
+}
+
+#tentangkami .paragrap {
+  color: var(--text-white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-align: justify;
+}
+
+#Menu .card {
+  background: transparent;
+  color: var(--text-white);
+}
+
+#Menu .card img {
+  background: transparent;
+  border: 2px solid var(--warna-cofe);
+  padding: 0;
+  border-radius: 25px;
+}
+
+#mybtn-order {
+  background: var(--warna-cofe);
+  color: var(--text-white);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+#mybtn-order:hover {
+  background: var(--text-white);
+  color: var(--warna-cofe);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+footer {
+  padding: 1rem;
+  border-top: 3px solid var(--warna-cofe);
+}
+
+/* style Kontak Kami */
+#kontakkami {
+  padding-top: 8rem;
+  margin-bottom: 10rem;
+}
+#kontakkami h2 {
+  color: var(--warna-cofe);
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+#kontakkami .kontak {
+  color: var(--warna-text-steal);
+}
+#kontakkami .p1 {
+  font-weight: 200;
+  font-family: "Poppins";
+  margin-bottom: 10px;
+}
+
+#kontakkami .maps iframe {
+  border-radius: 15px;
+  width: 100%;
+  height: 480px;
+  display: flex;
+}
+
+#kontakkami label {
+  color: var(--warna-cofe);
+}
+#message:focus,
+#name:focus,
+#email:focus,
+#nomor_hp:focus,
+#email_subject:focus {
+  box-shadow: 0px 0px 10px var(--warna-cofe);
+  color: var(--warna-cofe);
+}
+#kontakkami .form-control::placeholder,
+small {
+  color: var(--warna-cofe);
+}
+#name,
+#email,
+#nomor_hp,
+#email_subject,
+#message {
+  border: none;
+  background-color: var(--text-steal);
+  color: var(--warna-cofe);
+}
+#kontakkami .tombol-kirim {
+  background: var(--warna-cofe);
+  color: var(--text-white);
+}
+
+#produk .card,
+#produk .card img {
+  background: var(--text-steal);
+  border-radius: 12px;
+  padding: 0;
+  border: 2px solid var(--text-steal);
+}
+#produk .card-body {
+  border-radius: 12px;
+  background: var(--text-steal);
+}
+#produk .card-body p:nth-child(1) {
+  color: var(--warna-cofe);
+  background-color: var(--warna-cofe);
+  border-radius: 10px;
+  padding: 2px;
+  color: var(--text-dark);
+}
+#produk .btn {
+  color: var(--warna-cofe);
+  background-color: var(--warna-cofe);
+  border-radius: 12px;
+  padding: 5px;
+  color: var(--text-dark);
+  font-weight: 600;
+  width: 100%;
+}
+.offcanvas {
+  background-color: var(--baground-hitam);
+  color: var(--text-steal);
+  border-left: 4px solid var(--warna-cofe);
+}
+.offcanvas-body,
+.offcanvas-header {
+  border-left: 4px solid var(--warna-cofe);
+}
+
+#teamdev h1 {
+  color: var(--warna-cofe);
+}
+#teamdev p {
+  color: var(--text-steal);
+  font-size: 1.2rem;
+}
+#teamdev img,
+#teamdev .card {
+  border-radius: 12px;
+  background: var(--warna-cofe);
+  border: 2px solid var(--warna-cofe);
+}
+section#regis {
+  padding-bottom: 0rem;
+  padding-top: 0rem;
+}
+
+#regis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url("https://i.ibb.co.com/q65wScd/Whats-App-Image-2026-10-16-at-10-35-22-1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  background-attachment: fixed;
+  padding-top: 4rem;
+}
+#regis::before {
+  backdrop-filter: blur(12px);
+  width: 100%;
+  height: 100%;
+}
+#regis .form-control {
+  border: 2px solid var(--warna-cofe);
+  border-radius: 15px;
+}
+#regis .form-box {
+  background: var(--baground-hitam);
+  border: 4px solid var(--warna-cofe);
+  border-radius: 50px;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-steal);
+}
+#regis .form-box .btn {
+  background: var(--warna-cofe);
+  padding: 0.2rem 1rem;
+  border-radius: 25px;
+  font-size: 1.2rem;
+}
+#adminProduk th,
+#riwayatpesanan th,
+#detailpesanan th {
+  background: var(--warna-cofe);
+  color: var(--text-dark);
+}
+#adminProduk td,
+#riwayatpesanan td {
+  background: var(--text-steal);
+  color: var(--text-dark);
+  border-bottom: 3px solid var(--warna-cofe);
+  border-right: 3px solid var(--warna-cofe);
+}
+#adminProduk .btn-addproduk,
+#riwayatpesanan .btn-detail {
+  background: var(--warna-cofe);
+  color: var(--text-dark);
+  font-weight: 600;
+}
+#formproduk .card {
+  background: transparent;
+  border: 4px solid var(--warna-cofe);
+  border-radius: 25px;
+  color: var(--text-steal);
+}
+#formproduk input,
+#formproduk textarea,
+#formproduk select {
+  border: 2px solid var(--warna-cofe);
+  border-radius: 15px;
+}
+#admindashboard #cardss,
+#detailpesanan #cardss {
+  background: transparent;
+  border: 4px solid var(--warna-cofe);
+  border-radius: 15px;
+  color: var(--text-steal);
+  font-weight: 600;
+}
+#admindashboard #cardss p,
+#admindashboard #cardss .userpesanan,
+#detailpesanan #cardss {
+  color: var(--text-steal);
+  font-size: 1.1rem;
+}
+#detailpesanan th {
+  background: var(--warna-cofe);
+  color: var(--text-dark);
+}
+#detailpesanan td,
+#detailpesanan tr {
+  background: var(--text-steal);
+  color: var(--text-dark);
+  border-bottom: 3px solid var(--text-dark);
+  border-right: 3px solid var(--text-dark);
+}

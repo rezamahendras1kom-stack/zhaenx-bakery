@@ -1,0 +1,53 @@
+<%- include('../../partials/header') %>
+
+<h2 class="mb-4">Kelola Pesanan</h2>
+
+<% if (success) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+<% if (pesanan.length === 0) { %>
+  <div class="alert alert-info">Belum ada pesanan.</div>
+<% } else { %>
+  <div class="table-responsive bg-white">
+    <table class="table align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>#</th>
+          <th>Pemesan</th>
+          <th>Tanggal</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% pesanan.forEach(p => { %>
+          <tr>
+            <td>#<%= p.id %></td>
+            <td><%= p.user_nama %></td>
+            <td><%= new Date(p.tanggal).toLocaleString('id-ID') %></td>
+            <td>Rp <%= p.total.toLocaleString('id-ID') %></td>
+            <td>
+              <p class="w-50 text-white text-center m-0 px-2 py-1 rounded-3 bg-<%= p.status === 'selesai' ? 'success' : p.status === 'diproses' ? 'warning' : 'secondary' %>">
+                <%= p.status %>
+              </p>
+            </td>
+            <td>
+              <form action="/admin/pesanan/<%= p.id %>/status" method="POST" class="d-flex gap-1">
+                <select name="status" class="form-select form-select-sm" style="width:130px;">
+                  <option value="pending" <%= p.status === 'pending' ? 'selected' : '' %>>pending</option>
+                  <option value="diproses" <%= p.status === 'diproses' ? 'selected' : '' %>>diproses</option>
+                  <option value="selesai" <%= p.status === 'selesai' ? 'selected' : '' %>>selesai</option>
+                </select>
+                <button class="btn btn-sm btn-warning">Simpan</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+
+<%- include('../../partials/footer') %>

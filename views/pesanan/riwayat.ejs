@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+<section class="riwayatpesanan" id="riwayatpesanan">
+<div class="container-fluid px-4">
+  <div class="row ">
+
+<h2 class="mb-4">Riwayat Pesanan</h2>
+
+<% if (pesanan.length === 0) { %>
+  <div class="alert alert-info">Belum ada pesanan. <a href="/produk">Belanja dulu</a></div>
+<% } else { %>
+  <div class="table-responsive">
+    <table class="table align-middle text-center">
+      <thead class="table-light">
+        <tr>
+          <th>#</th>
+          <th>Tanggal</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <% pesanan.forEach(p => { %>
+          <tr>
+            <td>#<%= p.id %></td>
+            <td><%= new Date(p.tanggal).toLocaleString('id-ID') %></td>
+            <td>Rp <%= p.total.toLocaleString('id-ID') %></td>
+            <td class="">
+              <div class="tes d-flex justify-content-center align-items-center">
+                <p class="text-dark fw-5 text-center m-0 px-2 py-1 rounded-3 bg-<%= p.status === 'selesai' ? 'success' : p.status === 'diproses' ? 'warning' : 'secondary' %>"><%= p.status %></p></div>
+            </td>
+            <td><a href="/pesanan/<%= p.id %>" class="btn btn-detail">Check Detail</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</section>
+<% } %>
+
+<%- include('../partials/footer') %>

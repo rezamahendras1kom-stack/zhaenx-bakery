@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<h2 class="mb-4">Checkout</h2>
+
+<div class="row">
+  <div class="col-md-7">
+    <div class="card bg-white p-4">
+      <h5>Ringkasan Pesanan</h5>
+      <hr>
+      <% cart.forEach(item => { %>
+        <div class="d-flex justify-content-between mb-2">
+          <span><%= item.nama %> × <%= item.qty %></span>
+          <span>Rp <%= item.subtotal.toLocaleString('id-ID') %></span>
+        </div>
+      <% }) %>
+      <hr>
+      <div class="d-flex justify-content-between">
+        <strong>Total</strong>
+        <strong class="text-warning">Rp <%= total.toLocaleString('id-ID') %></strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <div class="card bg-white p-4">
+      <h5>Konfirmasi</h5>
+      <hr>
+      <p class="text-muted small">Pesanan akan diproses oleh admin. Pembayaran dilakukan di toko.</p>
+      <form action="/pesanan/checkout" method="POST">
+        <button class="btn btn-warning w-100">Pesan Sekarang</button>
+      </form>
+      <a href="/keranjang" class="btn btn-link w-100 mt-2">← Kembali ke keranjang</a>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

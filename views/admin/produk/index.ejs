@@ -1,0 +1,62 @@
+<%- include('../../partials/header') %>
+<section class="adminProduk" id="adminProduk">
+<div class="container-fluid px-3">
+  <div class="row">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2>Kelola Produk</h2>
+  <a href="/admin/produk/create" class="btn btn-addproduk">+ Tambah Produk</a>
+</div>
+
+<% if (success) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+<% if (produk.length === 0) { %>
+  <div class="alert alert-info">Belum ada produk. Klik "Tambah Produk" untuk mulai.</div>
+<% } else { %>
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle">
+      <thead class="table-light text-center">
+        <tr>
+          <th>Gambar</th>
+          <th>Nama</th>
+          <th>Kategori</th>
+          <th>Harga</th>
+          <th>Stok</th>
+          <th width="180">Aksi</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <% produk.forEach(p => { %>
+          <tr>
+            <td>
+              <% if (p.gambar) { %>
+                <img src="/uploads/<%= p.gambar %>" width="80" height="80"
+                     style="object-fit:cover;border-radius:6px;">
+              <% } else { %>
+                <span class="text-muted">—</span>
+              <% } %>
+            </td>
+            <td><%= p.nama %></td>
+            <td><%= p.kategori_nama || '-' %></td>
+            <td>Rp <%= p.harga.toLocaleString('id-ID') %></td>
+            <td><%= p.stok %></td>
+            <td>
+              <a href="/admin/produk/<%= p.id %>/edit" class="btn btn-sm btn-primary">Edit</a>
+              <form action="/admin/produk/<%= p.id %>/delete" method="POST"
+                    style="display:inline" onsubmit="return confirm('Yakin hapus produk ini?')">
+                <button class="btn btn-sm btn-danger">Hapus</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+</div>
+</div>
+</section>
+
+<%- include('../../partials/footer') %>

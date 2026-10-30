@@ -1,0 +1,56 @@
+<%- include('../partials/header') %>
+
+<section class="detailpesanan" id="detailpesanan">
+<div class="container">
+  <div class="row ">
+
+
+<% if (success) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+
+<div class="col-lg-4">
+<a href="/pesanan" class="btn btn-sm btn-secondary mb-3">← Kembali ke Riwayat Pesanan</a>
+</div>
+
+<div class="card p-4" id="cardss">
+  <h3>Pesanan #<%= pesanan.id %></h3>
+  <p class="text">
+    <%= new Date(pesanan.tanggal).toLocaleString('id-ID') %> —
+    Status: <strong><%= pesanan.status %></strong>
+  </p>
+  <hr>
+  <table class="table">
+    <thead>
+      <tr><th>Produk</th><th>Qty</th><th>Subtotal</th></tr>
+    </thead>
+    <tbody>
+      <% detail.forEach(d => { %>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <% if (d.gambar) { %>
+                <img src="/uploads/<%= d.gambar %>" width="50" height="50"
+                     style="object-fit:cover;border-radius:6px;" class="me-2">
+              <% } %>
+             <h4 class="fw-medium"><%= d.nama %></h4> 
+            </div>
+          </td>
+          <td> <p class="align-items-center mb-0">x<%= d.qty %></p></td>
+          <td class="rp">Rp <%= d.subtotal.toLocaleString('id-ID') %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="2" class="text-end">Total :</th>
+        <th>Rp <%= pesanan.total.toLocaleString('id-ID') %></th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+</div>
+</div>
+</section>
+
+<%- include('../partials/footer') %>

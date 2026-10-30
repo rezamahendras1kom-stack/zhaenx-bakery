@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<section class="produk" id="produk">
+<div class="container">
+
+ <div class="row">
+  <div class="col-lg-12">
+    <h1>Menu - Order</h1>
+  </div>
+</div>
+
+
+<% if (produk.length === 0) { %>
+  <div class="alert alert-info">Belum ada produk.</div>
+<% } else { %>
+  <div class="row d-flex justify-content-center align-items-center" id="menu-list">
+    <% produk.forEach(p => { %>
+      <div class="col-lg-4 mb-3" id="menukue">
+        <div class="card">
+          <% if (p.gambar) { %>
+            <img src="/uploads/<%= p.gambar %>" class="img-thumbnail p-0" loading="lazy" alt="imgkue">
+          <% } else { %>
+            <div style="height:180px;background:#e0c76c;display:flex;align-items:center;justify-content:center;font-size:3rem;">🍰</div>
+          <% } %>
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between align-items-center m-0"><%= p.nama %> <p class="fw-bold mb-0">Rp <%= p.harga.toLocaleString('id-ID') %></p></h5>
+            <p class="text-muted small mb-2"><%= p.kategori_nama || '-' %></p>
+            <a href="/produk/<%= p.id %>" class="btn">Lihat Detail</a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div></div>
+<% } %>
+</section>
+
+<%- include('../partials/footer') %>

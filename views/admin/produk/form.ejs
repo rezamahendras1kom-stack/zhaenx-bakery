@@ -1,0 +1,79 @@
+<%- include('../../partials/header') %>
+<section class="formproduk" id="formproduk">
+<div class="container">
+  <div class="row">
+
+<div class="col-lg-12">
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2><%= produk ? 'Edit Produk' : 'Tambah Produk' %></h2>
+<div class="x">
+  <a href="/admin/produk" class="btn btn-secondary">← Kembali</a>
+</div>
+</div>
+</div>
+
+<% if (error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+
+<div class="card p-4">
+  <form action="<%= action %>" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label class="form-label">Nama Produk *</label>
+      <input type="text" name="nama" class="form-control" required
+             value="<%= produk ? produk.nama : '' %>">
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Kategori</label>
+        <select name="kategori_id" class="form-select">
+          <option value="">— Pilih Kategori —</option>
+          <% kategori.forEach(k => { %>
+            <option value="<%= k.id %>"
+              <%= produk && produk.kategori_id == k.id ? 'selected' : '' %>>
+              <%= k.nama %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label class="form-label">Harga (Rp) *</label>
+        <input type="number" name="harga" class="form-control" min="0" required
+               value="<%= produk ? produk.harga : '' %>">
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label class="form-label">Stok</label>
+        <input type="number" name="stok" class="form-control" min="0"
+               value="<%= produk ? produk.stok : 0 %>">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Deskripsi</label>
+      <textarea name="deskripsi" class="form-control" rows="3"><%= produk ? (produk.deskripsi || '') : '' %></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Gambar Produk (jpg/png/webp, max 2MB)</label>
+      <input type="file" name="gambar" class="form-control" accept="image/*">
+      <% if (produk && produk.gambar) { %>
+        <div class="mt-2">
+          <img src="/uploads/<%= produk.gambar %>" width="120" style="border-radius:6px;">
+          <small class="text-muted d-block">Gambar saat ini. Upload baru untuk ganti.</small>
+        </div>
+      <% } %>
+    </div>
+
+    <button class="btn btn-warning" type="submit">
+      <%= produk ? 'Simpan Perubahan' : 'Tambah Produk' %>
+    </button>
+  </form>
+</div>
+</div>
+</div>
+</section>
+
+<%- include('../../partials/footer') %>

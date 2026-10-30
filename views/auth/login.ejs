@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+
+<section class="login" id="regis">
+<div class="container">
+  <div class="row d-flex justify-content-center">
+
+<div class="col-lg-5">
+
+<div class="form-box card">
+  <h2 class="position-relative text-center mb-3">Login</h2>
+
+  <% if (success) { %>
+    <div class="alert alert-success"><%= success %></div>
+  <% } %>
+  <% if (error) { %>
+    <div class="alert alert-error"><%= error %></div>
+  <% } %>
+
+  <form action="/login" method="POST" class="position-relative w-100">
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control"  name="email" placeholder="email@gmail.com" value="<%= old.email || '' %>" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control"  name="password" placeholder="Password (min 6 karakter)" required>
+    </div>
+
+<div class="col-lg-12 d-flex justify-content-center">
+    <button type="submit" class="btn">Login</button>
+</div>
+  </form>
+
+  <p style="margin-top:1rem;text-align:center;">
+    Belum punya akun? <a href="/register">Daftar</a>
+  </p>
+</div></div>
+</div></div>
+</section>
+

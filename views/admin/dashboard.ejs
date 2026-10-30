@@ -1,0 +1,77 @@
+<%- include('../partials/header') %>
+
+
+<section class="admindashboard" id="admindashboard">
+<div class="container">
+  <div class="row">
+
+<h2 class="mb-4">Dashboard Admin</h2>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card p-3" id="cardss">
+      <p class="mb-1 small">Total Produk</p>
+      <h2 class="mb-0"><%= stats.total_produk %></h2>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-3" id="cardss">
+      <p class="mb-1 small">Total Pesanan</p>
+      <h2 class="mb-0"><%= stats.total_pesanan %></h2>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-3" id="cardss">
+      <p class="mb-1 small">Total User</p>
+      <h2 class="mb-0"><%= stats.total_user %></h2>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-3" id="cardss">
+      <p class="mb-1 small">Pendapatan (selesai)</p>
+      <h2 class="mb-0 text-warning">Rp <%= stats.pendapatan.toLocaleString('id-ID') %></h2>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-6">
+    <div class="card p-3" id="cardss">
+      <h5>Kelola</h5>
+      <hr>
+      <a href="/admin/produk" class="btn btn-outline-warning w-100 mb-2">
+        <i class="bi bi-box-seam me-2"></i>Kelola Produk
+      </a>
+      <a href="/admin/pesanan" class="btn btn-outline-warning w-100">
+        <i class="bi bi-receipt me-2"></i>Kelola Pesanan
+      </a>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card p-3" id="cardss">
+      <h5>Pesanan Terbaru</h5>
+      <hr>
+      <% if (pesananTerbaru.length === 0) { %>
+        <p class="text-muted mb-0">Belum ada pesanan.</p>
+      <% } else { %>
+        <% pesananTerbaru.forEach(p => { %>
+          <div class="d-flex justify-content-between align-items-center mb-2 small">
+            <div class="userpesanan">
+              <strong>#<%= p.id %></strong> — <%= p.user_nama %>
+              <div class="text-muteds"><%= new Date(p.tanggal).toLocaleString('id-ID') %></div>
+            </div>
+            <p class="text-white text-center m-0 px-2 py-1 rounded-3 bg-<%= p.status === 'selesai' ? 'success' : p.status === 'diproses' ? 'warning' : 'secondary' %>">
+              <%= p.status %>
+            </p>
+          </div>
+        <% }) %>
+        <a href="/admin/pesanan" class="btn btn-sm btn-link p-0">Lihat semua →</a>
+      <% } %>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,122 @@
+<%- include('partials/header') %>
+
+    <section class="home" id="home">
+      <div class="container justify-content-center">
+        <div class="row position-relative z-3">
+          <div class="col-lg-7 conten">
+            <h4>Sedikit kebahagiaan dalam setiap gigitan.</h4>
+            <div class="hm">
+              <p class="slogan p-0 m-0">"Titip Kue-nya Jaga Perasaannya.!<span class="d-block">anjaaayyy..!"</span></p>
+              <a class="btn btn-lg" id="mybtn" href="/produk" target="_blank" rel="noopener">Beli Sekarang</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strat Tentang Kami -->
+    <section class="tentangkami" id="tentangkami">
+      <div class="container">
+        <div class="row justify-content-center align-items-center d-flex text-center">
+          <div class="col-lg-5 about1">
+            <h2 class="mb-5">Tentang <span class="tentang">Kami</span></h2>
+          </div>
+          <div class="row justify-content-center align-items-center d-flex">
+            <div class="col-lg-5 about2">
+              <img src="https://i.ibb.co.com/q65wScd/Whats-App-Image-2026-10-16-at-10-35-22-1.jpg" alt="tentangkami" width="100%" class="profile" />
+            </div>
+            <div class="col-lg-6 text-start mt-0 ms-3 about3">
+              <div class="paragrap">
+                <p class="p1">Zhaenx BAKERY adalah toko kue rumahan yang berdiri sejak 2020, menyajikan aneka kue basah, kue kering, bolu, dan tart dengan bahan-bahan pilihan.</p>
+                <p>
+                  "Aku menunggu kita ada di satu meja, ditemani kopi dan kue dari zhaenx bakery dengan aroma yang berbeda, membicarakan mimpi, bercengkrama tentang rencana. Bisa kita mulai dengan cincin yang mungkin sudah
+                  waktunya ada di jari kita, agar cinta tak berhenti sebagai wacana."
+                </p>
+                <!-- <p class="p2">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, excepturi voluptatem unde fugiat ad doloribus, nemo ratione quo repellendus incidunt officiis. Ad, animi delectus
+                  sapiente quaerat sit reprehenderit officiis recusandae dignissimos sequi quisquam, molestias quos pariatur eum excepturi cumque porro!
+                </p> -->
+              </div>
+              <button type="button" class="btn btn-lg" id="mybtn">Lanjut Baca...</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Tentang Kami -->
+
+    <!-- Start Kontak -->
+    <section id="kontakkami" class="kontakkami">
+        <div class="container">
+            <div class="row text-center justify-content-center align-items-center kontak1">
+                <div class="col-lg-5 mb-5">
+                    <h2>Kontak <span class="kontak">Kami</span></h2>
+                    <p class="mb-0 p1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia consectetur,
+                        quis porro maxime unde a.</p>
+                </div>
+            </div>
+            <div class="row justify-content-start align-items-center bg-dark rounded-4 kontak2">
+                <div class="col-lg-6">
+                    <div class="container maps">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126899.51606620825!2d107.07186208223824!3d-6.3148688952885506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699a97cdfd23f3%3A0xa467efa8d683cc31!2sCikarang%2C%20Kabupaten%20Bekasi%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1687863104222!5m2!1sid!2sid"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5">
+                    <form action="#">
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nama Lengkap :</label>
+                                    <input type="text" class="form-control form-control-lg" id="name"
+                                        placeholder="Masukkan Nama Lengkap" name="Nama" minlength="5" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address :</label>
+                                    <input type="email" class="form-control form-control-lg" id="email"
+                                        placeholder="Masukkan Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                        name="Email" required>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="nomor_hp" class="form-label">Nomor HP :</label>
+                                    <input type="tel" class="form-control form-control-lg" id="nomor_hp"
+                                        placeholder="Masukkan No.HP / WA" pattern="(\+62|62|0)8[1-9][0-9]{6,12}$"
+                                        name="No-Hp" required>
+                                    <small>Example: +628XXXXXXXXXX</small>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="email_subject" class="form-label">Email Subject :</label>
+                                    <input type="text" class="form-control form-control-lg" id="email_subject"
+                                        placeholder="Subject" name="Subject" required>
+                                </div>
+                            </div>
+                            <div class="col-lg">
+                                <div class="mb-0">
+                                    <label for="message" class="form-label">Pesan :</label>
+                                    <textarea class="form-control" id="message" rows="10"
+                                        placeholder="Tulis Pesan Disini.!" name="Pesan" required></textarea>
+                                </div>
+                                <div class="tb text-center">
+                                    <button id="mybtn" class="btn-light rounded-3 mt-3 btn tombol-kirim" type="submit">Kirim
+                                        Pesan</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- End Kontak -->
+
+<%- include('partials/footer') %> 
