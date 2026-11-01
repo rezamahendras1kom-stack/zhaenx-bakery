@@ -1,20 +1,25 @@
 <%- include('../partials/header') %>
 
+<section class="detailkue" id="detailkue">
+<div class="container-fluid">
+  <div class="row d-flex">
 
-<a href="/produk" class="btn btn-sm btn-secondary mb-3">← Kembali ke Menu</a>
+<div class="col-lg-12 d-flex justify-content-center align-items-center">
+  <a href="/produk" class="btn btn-sm btn-secondary mb-3">← Kembali ke Menu</a>
+</div>
 
-<div class="card bg-white p-4">
-  <div class="row">
+<div class="card">
+  <div class="row d-flex justify-content-center align-items-center "> 
     <div class="col-md-5">
       <% if (produk.gambar) { %>
-        <img src="/uploads/<%= produk.gambar %>" class="img-fluid rounded">
+        <img src="<%= imgUrl(produk.gambar) %>" class="img-fluid">
       <% } else { %>
         <div style="height:300px;background:#fef3c7;display:flex;align-items:center;justify-content:center;font-size:6rem;border-radius:8px;">🍰</div>
       <% } %>
     </div>
     <div class="col-md-7">
       <h2><%= produk.nama %></h2>
-      <p class="text-muted"><%= produk.kategori_nama || '-' %></p>
+      <p class="text-mute"><%= produk.kategori_nama || '-' %></p>
       <h3 class="text-warning">Rp <%= produk.harga.toLocaleString('id-ID') %></h3>
       <p class="mt-3"><%= produk.deskripsi || 'Belum ada deskripsi.' %></p>
       <p><strong>Stok:</strong> <%= produk.stok %></p>
@@ -26,12 +31,14 @@
                  class="form-control" style="width:100px;">
           <button class="btn btn-warning">Tambah ke Keranjang</button>
         </form>
-        <small class="text-muted d-block mt-2">*Fitur keranjang menyusul di step berikutnya</small>
+        <!-- <small class="text-muteds d-block mt-2">*Fitur keranjang menyusul di step berikutnya</small> -->
       <% } else { %>
         <div class="alert alert-warning mt-3">Stok habis</div>
       <% } %>
     </div>
   </div>
 </div>
-
+</div>
+</div>
+</section>
 <%- include('../partials/footer') %>

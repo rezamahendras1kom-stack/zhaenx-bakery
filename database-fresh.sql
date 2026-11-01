@@ -1,5 +1,6 @@
 -- ============================================
--- DATABASE TOKO KUE (TiDB Compatible)
+-- DATABASE TOKO KUE — FRESH (kosong kecuali kategori)
+-- Import ke database: test
 -- ============================================
 
 DROP TABLE IF EXISTS detail_pesanan;
@@ -53,32 +54,16 @@ CREATE TABLE detail_pesanan (
   FOREIGN KEY (produk_id) REFERENCES produk(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================
--- SEED DATA
--- ============================================
-INSERT INTO users (nama, email, password, role) VALUES
-('zhaenx', 'rezamahendra.s1kom@gmail.com', '$2b$10$TjnDfRFec0//hyBAeFj5ROlQr7TcKeIEupqz60/rxLRxt4J5fRBNG', 'admin'),
-('user-budi', 'budi@mail.com', '$2b$10$E32UwZEJfp38C9DftHWlF.zqvP2Tu0bSU4GU3ID43oxMmfm7avSRu', 'user');
+-- Seed kategori dasar
+INSERT INTO kategori (nama) VALUES 
+  ('Kue Basah'),
+  ('Kue Kering'),
+  ('Bolu'),
+  ('Tart');
 
-INSERT INTO kategori (id, nama) VALUES
-(1, 'Kue Basah'),
-(2, 'Kue Kering'),
-(3, 'Bolu'),
-(4, 'Tart');
-
-INSERT INTO produk (kategori_id, nama, harga, stok, gambar, deskripsi) VALUES
-(3, 'tart', 20000, 8, 'produk-1793044957184.jpeg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
-
-INSERT INTO pesanan (id, user_id, tanggal, total, status) VALUES
-(1, 1, '2026-10-27 04:32:04', 20000, 'diproses'),
-(2, 1, '2026-10-30 07:24:55', 20000, 'diproses'),
-(3, 1, '2026-10-30 07:26:16', 200000, 'pending');
-
-INSERT INTO detail_pesanan (pesanan_id, produk_id, qty, subtotal) VALUES
-(1, 1, 1, 20000),
-(2, 1, 1, 20000),
-(3, 1, 10, 200000);
-
-COMMIT;
-
-SHOW TABLES;
+-- Verifikasi
+SELECT 'users' AS tabel, COUNT(*) AS jumlah FROM users
+UNION ALL SELECT 'kategori', COUNT(*) FROM kategori
+UNION ALL SELECT 'produk', COUNT(*) FROM produk
+UNION ALL SELECT 'pesanan', COUNT(*) FROM pesanan
+UNION ALL SELECT 'detail_pesanan', COUNT(*) FROM detail_pesanan;

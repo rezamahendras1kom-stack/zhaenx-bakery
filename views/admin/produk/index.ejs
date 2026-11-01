@@ -32,7 +32,7 @@
           <tr>
             <td>
               <% if (p.gambar) { %>
-                <img src="/uploads/<%= p.gambar %>" width="80" height="80"
+                <img src="<%= imgUrl(p.gambar) %>" width="80" height="80"
                      style="object-fit:cover;border-radius:6px;">
               <% } else { %>
                 <span class="text-muted">—</span>

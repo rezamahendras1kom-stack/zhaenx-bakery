@@ -24,7 +24,7 @@
             <td>
               <div class="d-flex align-items-center">
                 <% if (item.gambar) { %>
-                  <img src="/uploads/<%= item.gambar %>" width="50" height="50"
+                  <img src="<%= imgUrl(item.gambar) %>" width="50" height="50"
                        style="object-fit:cover;border-radius:6px;" class="me-2">
                 <% } %>
                 <span><%= item.nama %></span>
@@ -55,7 +55,7 @@
   </div>
 
   <div class="d-flex justify-content-between align-items-center mt-3 p-3 bg-white rounded">
-    <h4 class="mb-0">Total: <span class="text-warning">Rp <%= total.toLocaleString('id-ID') %></span></h4>
+    <h4 class="mb-0 text-dark">Total: <span class="text-warning">Rp <%= total.toLocaleString('id-ID') %></span></h4>
     <a href="/pesanan/checkout" class="btn btn-warning btn-lg">Checkout →</a>
   </div>
 <% } %>

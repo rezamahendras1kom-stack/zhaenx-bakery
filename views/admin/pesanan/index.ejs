@@ -1,4 +1,8 @@
 <%- include('../../partials/header') %>
+<section>
+<div class="container-fluid px-4">
+  <div class="row">
+
 
 <h2 class="mb-4">Kelola Pesanan</h2>
 
@@ -14,11 +18,11 @@
       <thead class="table-light">
         <tr>
           <th>#</th>
-          <th>Pemesan</th>
-          <th>Tanggal</th>
-          <th>Total</th>
-          <th>Status</th>
-          <th>Aksi</th>
+          <th>Customer Name</th>
+          <th class="text-center">Tanggal</th>
+          <th class="text-center">Total</th>
+          <th class="text-center">Status</th>
+          <th class="text-center">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -26,15 +30,15 @@
           <tr>
             <td>#<%= p.id %></td>
             <td><%= p.user_nama %></td>
-            <td><%= new Date(p.tanggal).toLocaleString('id-ID') %></td>
-            <td>Rp <%= p.total.toLocaleString('id-ID') %></td>
-            <td>
+            <td class="text-center"><%= new Date(p.tanggal).toLocaleString('id-ID') %></td>
+            <td class="text-center">Rp <%= p.total.toLocaleString('id-ID') %></td>
+            <td class="text-center d-flex justify-content-center align-items-center">
               <p class="w-50 text-white text-center m-0 px-2 py-1 rounded-3 bg-<%= p.status === 'selesai' ? 'success' : p.status === 'diproses' ? 'warning' : 'secondary' %>">
                 <%= p.status %>
               </p>
             </td>
-            <td>
-              <form action="/admin/pesanan/<%= p.id %>/status" method="POST" class="d-flex gap-1">
+            <td class="text center">
+              <form action="/admin/pesanan/<%= p.id %>/status" method="POST" class="d-flex justify-content-center align-items-center gap-1">
                 <select name="status" class="form-select form-select-sm" style="width:130px;">
                   <option value="pending" <%= p.status === 'pending' ? 'selected' : '' %>>pending</option>
                   <option value="diproses" <%= p.status === 'diproses' ? 'selected' : '' %>>diproses</option>
@@ -47,7 +51,8 @@
         <% }) %>
       </tbody>
     </table>
-  </div>
+  </div></div>
+</div></section>
 <% } %>
 
 <%- include('../../partials/footer') %>

@@ -487,3 +487,13 @@ section#regis {
   border-bottom: 3px solid var(--text-dark);
   border-right: 3px solid var(--text-dark);
 }
+
+#detailkue .card {
+  background: transparent;
+  padding: 3rem;
+  color: var(--articel-bg);
+}
+#detailkue .card img {
+  border: 3px solid var(--warna-cofe);
+  border-radius: 15px;
+}

@@ -12,7 +12,7 @@
       <% cart.forEach(item => { %>
         <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
           <% if (item.gambar) { %>
-            <img src="/uploads/<%= item.gambar %>" width="60" height="60"
+            <img src="<%= imgUrl(item.gambar) %>" width="60" height="60"
                  style="object-fit:cover;border-radius:6px;" class="me-3">
           <% } else { %>
             <div style="width:60px;height:60px;background:#fef3c7;display:flex;align-items:center;justify-content:center;border-radius:6px;margin-right:1rem;">🍰</div>

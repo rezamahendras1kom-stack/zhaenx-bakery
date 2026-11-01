@@ -30,7 +30,7 @@
           <td>
             <div class="d-flex align-items-center">
               <% if (d.gambar) { %>
-                <img src="/uploads/<%= d.gambar %>" width="50" height="50"
+                <img src="<%= imgUrl(p.gambar) %>" width="50" height="50"
                      style="object-fit:cover;border-radius:6px;" class="me-2">
               <% } %>
              <h4 class="fw-medium"><%= d.nama %></h4> 

@@ -9,7 +9,7 @@
 <div class="x">
   <a href="/admin/produk" class="btn btn-secondary">← Kembali</a>
 </div>
-</div>
+</div>  
 </div>
 
 <% if (error) { %>
@@ -51,21 +51,34 @@
       </div>
     </div>
 
+
     <div class="mb-3">
       <label class="form-label">Deskripsi</label>
       <textarea name="deskripsi" class="form-control" rows="3"><%= produk ? (produk.deskripsi || '') : '' %></textarea>
     </div>
 
+
     <div class="mb-3">
       <label class="form-label">Gambar Produk (jpg/png/webp, max 2MB)</label>
       <input type="file" name="gambar" class="form-control" accept="image/*">
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label small">🔗 Atau paste URL gambar</label>
+      <input type="url" name="gambar_url" class="form-control"
+             placeholder="https://example.com/gambar-kue.jpg"
+             value="<%= produk && produk.gambar && produk.gambar.startsWith('http') ? produk.gambar : '' %>">
+    </div>
+
       <% if (produk && produk.gambar) { %>
         <div class="mt-2">
           <img src="/uploads/<%= produk.gambar %>" width="120" style="border-radius:6px;">
-          <small class="text-muted d-block">Gambar saat ini. Upload baru untuk ganti.</small>
+          <small class="text-muted d-block mt-1">
+            <%= produk.gambar.startsWith('http') ? '🌐 URL eksternal' : '📁 File upload' %>
+          </small>
         </div>
       <% } %>
-    </div>
+   
 
     <button class="btn btn-warning" type="submit">
       <%= produk ? 'Simpan Perubahan' : 'Tambah Produk' %>
