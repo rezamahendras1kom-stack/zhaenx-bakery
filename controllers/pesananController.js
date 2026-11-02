@@ -93,7 +93,12 @@ exports.detail = async (req, res) => {
     res.render('pesanan/detail', {
       pesanan: p[0],
       detail,
-      success: req.query.success ? 'Pesanan berhasil dibuat!' : null
+      success: req.query.success === 'cancelled' ? 'Pesanan berhasil dibatalkan.' 
+             : req.query.success ? 'Pesanan berhasil dibuat!' 
+             : null,
+      error: req.query.err === 'cannot_cancel' 
+             ? 'Pesanan tidak bisa dibatalkan (status bukan pending).' 
+             : null
     });
   } catch (err) {
     console.error(err);
@@ -129,5 +134,69 @@ exports.updateStatus = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error: ' + err.message);
+  }
+};
+
+// ===== USER: BATALKAN PESANAN =====
+exports.cancel = async (req, res) => {
+  const user_id = req.session.user.id;
+  const pesananId = req.params.id;
+
+  const conn = await db.getConnection();
+  try {
+    await conn.beginTransaction();
+
+    // Ambil pesanan milik user (LOCK)
+    const [rows] = await conn.query(
+      'SELECT * FROM pesanan WHERE id = ? AND user_id = ? FOR UPDATE',
+      [pesananId, user_id]
+    );
+
+    if (rows.length === 0) {
+      await conn.rollback();
+      return res.redirect('/pesanan?err=notfound');
+    }
+
+    if (rows[0].status !== 'pending') {
+      await conn.rollback();
+      return res.redirect(`/pesanan/${pesananId}?err=cannot_cancel`);
+    }
+
+    // Ambil detail untuk restock
+    const [details] = await conn.query(
+      'SELECT produk_id, qty FROM detail_pesanan WHERE pesanan_id = ?',
+      [pesananId]
+    );
+
+    // Kembalikan stok
+    for (const d of details) {
+      await conn.query(
+        'UPDATE produk SET stok = stok + ? WHERE id = ?',
+        [d.qty, d.produk_id]
+      );
+    }
+
+    // Kalau pesanan pakai kupon, kembalikan kuota kupon
+    if (rows[0].kupon_id) {
+      await conn.query(
+        'UPDATE kupon SET terpakai = GREATEST(terpakai - 1, 0) WHERE id = ?',
+        [rows[0].kupon_id]
+      );
+    }
+
+    // Update status jadi dibatalkan
+    await conn.query(
+      'UPDATE pesanan SET status = ? WHERE id = ?',
+      ['dibatalkan', pesananId]
+    );
+
+    await conn.commit();
+    res.redirect(`/pesanan/${pesananId}?success=cancelled`);
+  } catch (err) {
+    await conn.rollback();
+    console.error(err);
+    res.status(500).send('Server error: ' + err.message);
+  } finally {
+    conn.release();
   }
 };

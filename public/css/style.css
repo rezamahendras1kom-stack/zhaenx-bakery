@@ -69,7 +69,10 @@ body {
   color: var(--warna-text-steal);
   font-family: "Viga", sans-serif;
 }
+#dropdownMenu li a{
+  font-size: 1rem;
 
+}
 .navbar {
   background-color: var(--baground-hitam);
   border-bottom: 4px solid var(--warna-cofe);
@@ -77,7 +80,7 @@ body {
 .nav-link {
   margin-top: 0;
   color: var(--text-white);
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: 500;
   transition: 0.3s ease;
   border-bottom: 0px solid var(--warna-cofe);
@@ -215,7 +218,7 @@ body {
   color: var(--text-warna-cofe);
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 1);
 }
@@ -468,13 +471,13 @@ section#regis {
   border: 4px solid var(--warna-cofe);
   border-radius: 15px;
   color: var(--text-steal);
-  font-weight: 600;
+  font-weight: 500;
 }
 #admindashboard #cardss p,
 #admindashboard #cardss .userpesanan,
 #detailpesanan #cardss {
   color: var(--text-steal);
-  font-size: 1.1rem;
+  /* font-size: 1rem; */
 }
 #detailpesanan th {
   background: var(--warna-cofe);

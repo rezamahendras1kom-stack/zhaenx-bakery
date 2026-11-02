@@ -4,6 +4,9 @@
 <div class="container">
   <div class="row ">
 
+<% if (error) { %>
+  <div class="alert alert-warning mt-3"><%= error %></div>
+<% } %>
 
 <% if (success) { %>
   <div class="alert alert-success"><%= success %></div>
@@ -15,10 +18,23 @@
 
 <div class="card p-4" id="cardss">
   <h3>Pesanan #<%= pesanan.id %></h3>
-  <p class="text">
+<div class="s d-flex">
+  <p class="text mb-0 me-1">
     <%= new Date(pesanan.tanggal).toLocaleString('id-ID') %> —
-    Status: <strong><%= pesanan.status %></strong>
+    Status:   <p class="text-center m-0 px-1 rounded-3 mb-0 bg-<%= pesanan.status === 'selesai' ? 'success' : pesanan.status === 'diproses' ? 'warning' : pesanan.status === 'dibatalkan' ? 'danger' : 'primary' %>">
+    <%= pesanan.status %>
   </p>
+  </p>
+</div>
+
+  <hr>
+<% if (pesanan.status === 'pending') { %>
+  <form action="/pesanan/<%= pesanan.id %>/cancel" method="POST" 
+        onsubmit="return confirm('Yakin batalkan pesanan ini? Stok akan dikembalikan.')">
+    <button class="btn btn-outline-danger">Batalkan Pesanan</button>
+  </form>
+<% } %>
+
   <hr>
   <table class="table">
     <thead>
@@ -30,7 +46,7 @@
           <td>
             <div class="d-flex align-items-center">
               <% if (d.gambar) { %>
-                <img src="<%= imgUrl(p.gambar) %>" width="50" height="50"
+                <img src="<%= imgUrl(d.gambar) %>" width="50" height="50"
                      style="object-fit:cover;border-radius:6px;" class="me-2">
               <% } %>
              <h4 class="fw-medium"><%= d.nama %></h4> 
@@ -42,6 +58,17 @@
       <% }) %>
     </tbody>
     <tfoot>
+      <% const subtotal = detail.reduce((s, d) => s + d.subtotal, 0); %>
+      <% if (pesanan.diskon > 0) { %>
+        <tr>
+          <th colspan="2" class="text-end">Subtotal :</th>
+          <th>Rp <%= subtotal.toLocaleString('id-ID') %></th>
+        </tr>
+        <tr>
+          <th colspan="2" class="text-end text-success">Diskon :</th>
+          <th class="text-success">-Rp <%= pesanan.diskon.toLocaleString('id-ID') %></th>
+        </tr>
+      <% } %>
       <tr>
         <th colspan="2" class="text-end">Total :</th>
         <th>Rp <%= pesanan.total.toLocaleString('id-ID') %></th>

@@ -27,7 +27,8 @@
             <td>Rp <%= p.total.toLocaleString('id-ID') %></td>
             <td class="">
               <div class="tes d-flex justify-content-center align-items-center">
-                <p class="text-dark fw-5 text-center m-0 px-2 py-1 rounded-3 bg-<%= p.status === 'selesai' ? 'success' : p.status === 'diproses' ? 'warning' : 'secondary' %>"><%= p.status %></p></div>
+                <p class="text-dark fw-5 text-center m-0 px-2 py-1 rounded-3 bg-<%= p.status === 'selesai' ? 'success' : p.status === 'diproses' ? 'warning' : p.status === 'dibatalkan' ? 'danger' : 'secondary' %>">
+  <%= p.status %></p></div>
             </td>
             <td><a href="/pesanan/<%= p.id %>" class="btn btn-detail">Check Detail</a></td>
           </tr>
